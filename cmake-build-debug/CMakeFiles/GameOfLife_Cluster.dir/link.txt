@@ -1,0 +1,1 @@
+/usr/bin/gcc -g   CMakeFiles/GameOfLife_Cluster.dir/Utils.c.o CMakeFiles/GameOfLife_Cluster.dir/cluster.c.o  -o GameOfLife_Cluster 

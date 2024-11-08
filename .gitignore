@@ -1,0 +1,7 @@
+*.o
+demon
+generator
+.vscode/
+bigFiles/
+.idea/
+*.bin

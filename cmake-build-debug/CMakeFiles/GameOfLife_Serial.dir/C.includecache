@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/HP/Projects/GameOfLife/Utils.c
+Utils.h
+/mnt/c/Users/HP/Projects/GameOfLife/Utils.h
+time.h
+-
+stdlib.h
+-
+stdio.h
+-
+
+/mnt/c/Users/HP/Projects/GameOfLife/Utils.h
+
+/mnt/c/Users/HP/Projects/GameOfLife/serial.c
+stdlib.h
+-
+unistd.h
+-
+Utils.h
+/mnt/c/Users/HP/Projects/GameOfLife/Utils.h
+

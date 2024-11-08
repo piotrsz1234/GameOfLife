@@ -1,0 +1,1 @@
+/usr/bin/gcc -g   CMakeFiles/GameOfLife_Serial.dir/Utils.c.o CMakeFiles/GameOfLife_Serial.dir/serial.c.o  -o GameOfLife_Serial 

@@ -1,0 +1,1 @@
+/usr/bin/gcc -g   CMakeFiles/GameOfLife.dir/Utils.c.o CMakeFiles/GameOfLife.dir/main.c.o  -o GameOfLife 

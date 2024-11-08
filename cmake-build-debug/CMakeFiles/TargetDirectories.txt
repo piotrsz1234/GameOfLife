@@ -1,0 +1,4 @@
+/mnt/c/Users/HP/Projects/GameOfLife/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/HP/Projects/GameOfLife/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/HP/Projects/GameOfLife/cmake-build-debug/CMakeFiles/GameOfLife_Serial.dir
+/mnt/c/Users/HP/Projects/GameOfLife/cmake-build-debug/CMakeFiles/GameOfLife_Cluster.dir
