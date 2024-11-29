@@ -1,24 +1,24 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
-  )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "/mnt/c/Users/HP/Projects/GameOfLife/Utils.c" "/mnt/c/Users/HP/Projects/GameOfLife/cmake-build-debug/CMakeFiles/GameOfLife_Serial.dir/Utils.c.o"
-  "/mnt/c/Users/HP/Projects/GameOfLife/serial.c" "/mnt/c/Users/HP/Projects/GameOfLife/cmake-build-debug/CMakeFiles/GameOfLife_Serial.dir/serial.c.o"
-  )
-set(CMAKE_C_COMPILER_ID "GNU")
-
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi"
-  "/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent"
-  "/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include"
-  "/usr/lib/x86_64-linux-gnu/openmpi/include"
   )
 
-# Targets to which this target links.
-set(CMAKE_TARGET_LINKED_INFO_FILES
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/mnt/c/Users/PiotrSzuflicki/Desktop/Projects/GameOfLife/Utils.c" "CMakeFiles/GameOfLife_Serial.dir/Utils.c.o" "gcc" "CMakeFiles/GameOfLife_Serial.dir/Utils.c.o.d"
+  "/mnt/c/Users/PiotrSzuflicki/Desktop/Projects/GameOfLife/serial.c" "CMakeFiles/GameOfLife_Serial.dir/serial.c.o" "gcc" "CMakeFiles/GameOfLife_Serial.dir/serial.c.o.d"
+  "" "GameOfLife_Serial" "gcc" "CMakeFiles/GameOfLife_Serial.dir/link.d"
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

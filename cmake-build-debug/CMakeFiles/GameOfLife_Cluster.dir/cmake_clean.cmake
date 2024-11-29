@@ -1,8 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/GameOfLife_Cluster.dir/link.d"
   "CMakeFiles/GameOfLife_Cluster.dir/Utils.c.o"
+  "CMakeFiles/GameOfLife_Cluster.dir/Utils.c.o.d"
   "CMakeFiles/GameOfLife_Cluster.dir/cluster.c.o"
-  "GameOfLife_Cluster.pdb"
+  "CMakeFiles/GameOfLife_Cluster.dir/cluster.c.o.d"
   "GameOfLife_Cluster"
+  "GameOfLife_Cluster.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

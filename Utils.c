@@ -24,6 +24,7 @@ int CountNeighbours(int *board, int x, int y, int width, int height)
 
 void CalculateIteration(int *currentBoard, int *nextBoard, int width, int height)
 {
+	#pragma omp parallel for
 	for (int y = 0; y < height; y++)
 	{
 		for (int x = 0; x < width; x++)
@@ -56,8 +57,18 @@ void RandomBoard(int *board, int width, int height)
 		{
 			int index = j + i * width;
 			board[index] = rand() % 2;
+			board[index] = 0;
 		}
 	}
+}
+
+void Glider(int* board, int width, int height) 
+{
+	board[3 + width] = 1;
+	board[width * 2 + 4] = 1;
+	board[width* 3 + 2] = 1;
+	board[width* 3 + 3] = 1;
+	board[width* 3 + 4] = 1;
 }
 
 void PrintBoard(int *board, int width, int height)
@@ -67,24 +78,27 @@ void PrintBoard(int *board, int width, int height)
 		for (int x = 0; x < width; x++)
 		{
 			int index = x + y * width;
-			printf("%d", board[index]);
+			if(board[index] == 1)
+			printf("*");
+			else 
+			printf(" ");
 		}
-		printf("\n");
+		printf("|\n");
 	}
-	printf("\n");
+	printf("------\n");
 }
 
-int *GetShiftedArray(const int *board, int rank, int globalN)
+int *GetShiftedArray(int *board, int rank, int globalN)
 {
 	return board + (rank > 0 ? globalN : 0);
 }
 
-int *GetLastRowArray(const int *board, int originalN, int globalN)
+int *GetLastRowArray(int *board, int originalN, int globalN)
 {
 	return board + ((originalN - 1) + globalN);
 }
 
-int *GetBottomGhostRowArray(const int *board, int originalN, int globalN)
+int *GetBottomGhostRowArray(int *board, int originalN, int globalN)
 {
 	return board + ((originalN) + globalN);
 }

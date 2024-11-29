@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "GameOfLife",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "GameOfLife_Cluster::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GameOfLife_Cluster-Debug-a7a22f7da147ce6028e8.json",
+					"name" : "GameOfLife_Cluster",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "GameOfLife_Serial::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GameOfLife_Serial-Debug-5a59c930f98708f3d565.json",
+					"name" : "GameOfLife_Serial",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/mnt/c/Users/PiotrSzuflicki/Desktop/Projects/GameOfLife/cmake-build-debug",
+		"source" : "/mnt/c/Users/PiotrSzuflicki/Desktop/Projects/GameOfLife"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

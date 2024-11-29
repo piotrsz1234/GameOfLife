@@ -1,1 +1,1 @@
-/usr/bin/gcc -g   CMakeFiles/GameOfLife_Serial.dir/Utils.c.o CMakeFiles/GameOfLife_Serial.dir/serial.c.o  -o GameOfLife_Serial 
+/usr/sbin/cc -g -Wl,--dependency-file,CMakeFiles/GameOfLife_Serial.dir/link.d CMakeFiles/GameOfLife_Serial.dir/Utils.c.o CMakeFiles/GameOfLife_Serial.dir/serial.c.o -o GameOfLife_Serial

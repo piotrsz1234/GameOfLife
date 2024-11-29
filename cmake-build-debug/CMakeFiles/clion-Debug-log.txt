@@ -1,0 +1,4 @@
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /mnt/c/Users/PiotrSzuflicki/Desktop/Projects/GameOfLife -B /mnt/c/Users/PiotrSzuflicki/Desktop/Projects/GameOfLife/cmake-build-debug
+-- Configuring done (1.2s)
+-- Generating done (0.3s)
+-- Build files have been written to: /mnt/c/Users/PiotrSzuflicki/Desktop/Projects/GameOfLife/cmake-build-debug
