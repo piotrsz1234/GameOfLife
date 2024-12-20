@@ -1,0 +1,3 @@
+Table size: 30000
+Iterations: 20
+CPU time used (per clock()): 3.39 s

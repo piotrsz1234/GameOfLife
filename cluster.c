@@ -4,7 +4,7 @@
 #include <mpi.h>
 #include "Utils.h"
 
-void CopyLocalArray(int *board, int originalN, int globalN, int *globalBoard)
+void CopyLocalArray(char *board, int originalN, int globalN, char *globalBoard)
 {
 	for (int y = 0; y < originalN; y++)
 	{
@@ -28,14 +28,15 @@ int main(int argc, char *argv[])
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
 
 	double startTime = MPI_Wtime();
-	printf("Dzien dobry: %d %d %d", globalN, iterations, syncToSave);
+	printf("Table size: %d\nIterations: %d\nSyncToPrint: %d", globalN, iterations, syncToSave);
 	int N = globalN / size;
-	int allocated = N * (rank + 1);
-	if (allocated < globalN)
-		N == (globalN - allocated);
+	int allocated = N * size;
+	
+	if (rank == size - 1 && allocated < globalN)
+		N = globalN - allocated;
 
 	int originalN = N;
-
+	
 	if (rank == 0 || rank == size - 1)
 	{
 		N++;
@@ -44,21 +45,21 @@ int main(int argc, char *argv[])
 	{
 		N += 2;
 	}
-	int *globalBoard = NULL;
+	char *globalBoard = NULL;
 
-	int *board = malloc(N * globalN * sizeof(int));
-	int *newBoard = malloc(N * globalN * sizeof(int));
+	char *board = malloc(N * globalN * sizeof(char));
+	char *newBoard = malloc(N * globalN * sizeof(char));
 
 	if (rank == 0 && syncToSave > 0)
 	{
-		globalBoard = malloc(globalN * globalN * sizeof(int));
+		globalBoard = malloc(globalN * globalN * sizeof(char));
 	}
+
 	RandomBoard((GetShiftedArray(board, rank, globalN)), globalN, originalN);
 
 	if (rank == 0 && syncToSave > 0)
 	{
 		Glider(board, globalN, originalN);
-		globalBoard = malloc(globalN * globalN * sizeof(int));
 		CopyLocalArray(board, originalN, globalN, globalBoard);
 		PrintBoard(globalBoard, globalN, globalN);
 	}
@@ -67,18 +68,18 @@ int main(int argc, char *argv[])
 	{
 		if (rank < size - 1)
 		{
-			MPI_Sendrecv(GetLastRowArray(board, originalN, globalN), globalN, MPI_INT, rank + 1, 0,
-						 GetBottomGhostRowArray(board, originalN, globalN), globalN, MPI_INT, rank + 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+			MPI_Sendrecv(GetLastRowArray(board, originalN, globalN), globalN, MPI_BYTE, rank + 1, 0,
+						 GetBottomGhostRowArray(board, originalN, globalN), globalN, MPI_BYTE, rank + 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 		}
 		if (rank > 0)
 		{
-			MPI_Sendrecv(GetShiftedArray(board, rank, globalN), globalN, MPI_INT, rank - 1, 0,
-						 board, globalN, MPI_INT, rank - 1, 0, MPI_COMM_WORLD,
+			MPI_Sendrecv(GetShiftedArray(board, rank, globalN), globalN, MPI_BYTE, rank - 1, 0,
+						 board, globalN, MPI_BYTE, rank - 1, 0, MPI_COMM_WORLD,
 						 MPI_STATUS_IGNORE);
 		}
 
 		CalculateIteration(board, newBoard, globalN, N);
-		int *temp = board;
+		char *temp = board;
 		board = newBoard;
 		newBoard = temp;
 
@@ -90,22 +91,23 @@ int main(int argc, char *argv[])
 
 				for (int r = 1; r < size; r++)
 				{
-					int *shifted = globalBoard + r * globalN;
-					MPI_Recv(shifted, globalN, MPI_INT, r, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+					char *shifted = globalBoard + r * globalN;
+					MPI_Recv(shifted, globalN, MPI_BYTE, r, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 				}
 
 				PrintBoard(globalBoard, globalN, globalN);
 			}
 			else
 			{
-				MPI_Send(GetShiftedArray(board, rank, globalN), originalN * globalN, MPI_INT, 0, 0, MPI_COMM_WORLD);
+				MPI_Send(GetShiftedArray(board, rank, globalN), originalN * globalN, MPI_BYTE, 0, 0, MPI_COMM_WORLD);
 			}
 		}
 	}
 
+	MPI_Barrier(MPI_COMM_WORLD);
 	double endTime = MPI_Wtime();
 
-	printf("\n\n%f", (endTime - startTime));
+	printf("\n\nExecution time: %f", (endTime - startTime) / iterations);
 
 	free(board);
 	free(newBoard);

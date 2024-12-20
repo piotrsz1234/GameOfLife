@@ -1,0 +1,5 @@
+Table size: 30000
+Iterations: 20
+SyncToPrint: 0
+
+Execution time: 3.386744
